@@ -1162,11 +1162,7 @@ main {
     margin-top: 30px;
 }
 
-.LKcontainer {
-    background: center url(../img/back.png) no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-}
+
 
 .LKdata {
     margin: 30px;
@@ -1207,7 +1203,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #ccc;
 }
 
 
