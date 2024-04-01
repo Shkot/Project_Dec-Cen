@@ -49,9 +49,6 @@
 
                     <div class="header-container__social"><img src="img/vk.png" width="50px" height="50px"></div>
 
-    
-    
-
                     <div class="regist">
                     <form action="register.php" method="POST">
                         <h4>Регистрация</h4>
