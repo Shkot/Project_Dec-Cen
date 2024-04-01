@@ -1,4 +1,21 @@
+<?php
+include "register.php";
+session_start(); // Начинаем сессию
 
+// Проверяем, авторизован ли пользователь
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    $button_text_dva = 
+    $button_text = $username; // Если пользователь авторизован, используем его имя в качестве текста кнопки
+    $logout_button = '<a class="regorauth" href="logout.php">Выйти</a>'; // Применяем класс стилей к кнопке "Выйти"
+} else {
+    $button_enter = "Войти";
+    $logout_button = '';
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -19,6 +36,23 @@
 </head>
 
 <body>
+<?php
+// Проверяем наличие параметра "registration_success" в URL
+if (isset($_GET['registration_success']) && $_GET['registration_success'] == 1) {
+    echo "<div class='registration-message' id='registrationMessage'>
+    <span class='close-btn' onclick='closeMessage()'>×</span>
+    Регистрация успешна!
+  </div>";
+}
+?>
+<script>
+    // JavaScript функция для закрытия сообщения
+    function closeMessage() {
+        var message = document.getElementById('registrationMessage');
+        message.style.display = 'none';
+    }
+</script>
+
     <header class="header">
         <div class="header-container">
             <div class="container">
@@ -48,6 +82,19 @@
                     
 
                     <div class="header-container__social"><img src="img/vk.png" width="50px" height="50px"></div>
+<?php
+// Проверяем, авторизован ли пользователь
+if (isset($_SESSION["username"])) {
+    // Если пользователь авторизован, устанавливаем атрибут onclick для перенаправления на страницу LK.php
+    echo '<div class="rega" onclick="location.href=\'LK.php\'">' . $button_text . '</div>';
+} else {
+    // Если пользователь не авторизован, показываем обычную кнопку "Войти"
+    echo '<button class="regorauth " type="button" onclick="showAuth()">' . $button_enter . '</button>';
+}
+?>
+<?php echo $logout_button; ?>
+    
+    
 
                     <div class="regist">
                     <form action="register.php" method="POST">
@@ -91,6 +138,63 @@
                 </div>
             </div>
         </div>
+       
+        <script>
+    function showAuth() {
+        var authDiv = document.querySelector('.auth');
+        var registDiv = document.querySelector('.regist');
+        if (authDiv.style.display === "none") {
+            authDiv.style.display = "block";
+            
+        } else {
+            authDiv.style.display = "none";
+            
+        }
+    }
+    function hideAuth() {
+        var authDiv = document.querySelector('.auth');
+        var registDiv = document.querySelector('.regist');
+        if (authDiv.style.display === "block") {
+            authDiv.style.display = "none";
+            
+        } else {
+            authDiv.style.display = "block";
+            
+        }
+    }
+    function showRegist() {
+        var authDiv = document.querySelector('.auth');
+        var registDiv = document.querySelector('.regist');
+        if (registDiv.style.display === "none") {
+            authDiv.style.display = "none";
+            registDiv.style.display = "block";
+            
+        } else {
+            registDiv.style.display = "none";
+            
+        }
+    }
+    function hideRegist() {
+        var authDiv = document.querySelector('.auth');
+        var registDiv = document.querySelector('.regist');
+        if (registDiv.style.display === "block") {
+            registDiv.style.display = "none";
+            
+        } else {
+            registDiv.style.display = "block";
+            
+        }
+    }
+    
+
+    document.querySelector('.regorauth').addEventListener('click', function() {
+        var authDiv = document.querySelector('.auth');
+        var registDiv = document.querySelector('.regist');
+        authDiv.style.display = "block";
+        registDiv.style.display = "none";
+        
+    });
+</script>
 
 
         <div class="header-container--second">
