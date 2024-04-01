@@ -143,7 +143,7 @@ $conn->close();
     <div class="LKfilling" >
         <div class="LKfillingData" >
             <div class="LKdata" >
-                <h3 class="LKHeader3" >Данные пользователя:</h3>
+                <h3 class="LKHeader3" >Данные пользователя:-</h3>
                 <p><strong>Имя:</strong> <?php echo $current_username; ?></p>
                 <p><strong>Телефон:</strong> <?php echo $current_phone; ?></p>
             </div>
