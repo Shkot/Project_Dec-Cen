@@ -74,7 +74,7 @@ $result_children = $conn->query($sql_children);
 
 // HTML для вывода списка детей
 $children_html = "<div class='children'>";
-$children_html .= "<h2>Ваши дети</h2>";
+$children_html .= "<h2 class='LKHeader' style=' margin-bottom: 10px;'>Ваши дети</h2>";
 $children_html .= "<table border='1'>";
 $children_html .= "<tr><th>Имя</th><th>Дата рождения</th><th>Пол</th></tr>";
 while ($row_child = $result_children->fetch_assoc()) {
@@ -136,7 +136,7 @@ $conn->close();
                             <li><a href="#contacts">Контакты</a></li>
                         </ul>
                     </div>
-                    <div class="header-container__social"><img src="img/vk.png" width="50px" height="50px"></div>
+                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" height="50px"> </a> </div>
 </header>
 <div class="LKcontainer" >
     <h2 class="LKHeader2" >Личный кабинет</h2>
@@ -159,10 +159,13 @@ $conn->close();
         <div class="imgChildren" >
             <img class="child_img" src="img/srr.png" >
         </div>
+        <h3 class="LKHeader" style="font-size: 25px;">Дети</h3>
         <div class="LKfillingChildren" >
+            <!-- Вывод списка детей -->
+            <?php echo $children_html; ?>
             <!-- HTML форма для добавления нового ребенка -->
             <div class="LKchildren">
-                <h3 class="LKHeader3">Дети</h3>
+                <h3 class="LKHeader3">Добавить ребенка:</h3>
                 <form action="add_child.php" method="post">
                     <label for="child_first_name">Имя:</label>
                     <input type="text" id="child_first_name" name="child_first_name" required><br>
@@ -176,10 +179,12 @@ $conn->close();
                     <button type="submit">Добавить ребенка</button>
                 </form>
             </div>
-        
-            <!-- Вывод списка детей -->
-            <?php echo $children_html; ?>
         </div>
+
+        <div class="imgChildren2" >
+            <img class="child_img" src="img/srr.png" >
+        </div>
+
         <div class="LKfillingCalendar" >
             <!-- Код календаря -->
             <div id="calendar"></div>
