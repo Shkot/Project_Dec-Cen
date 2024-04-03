@@ -494,9 +494,9 @@ if (isset($_SESSION["username"])) {
                         <p><span>Email:</span> ok@ostrovoknt.ru</p>
                     </div>
                     <div class="contact-map">
-                        <div class="contact-map__style" style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/ostrovok/1202655529/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Островок</a><a href="https://yandex.ru/maps/11168/nizhniy-tagil/category/children_developmental_center/184107204/?utm_medium=mapframe&utm_source=maps"
+                        <div class="contact-map__style" style="position:relative;overflow:hidden;width: 550px; height: 300px;"><a href="https://yandex.ru/maps/org/ostrovok/1202655529/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Островок</a><a href="https://yandex.ru/maps/11168/nizhniy-tagil/category/children_developmental_center/184107204/?utm_medium=mapframe&utm_source=maps"
                                 style="color:#eee;font-size:12px;position:absolute;top:14px;">Центр развития ребёнка в Нижнем Тагиле</a><a href="https://yandex.ru/maps/11168/nizhniy-tagil/category/entertainment_center/184106372/?utm_medium=mapframe&utm_source=maps"
-                                style="color:#eee;font-size:12px;position:absolute;top:28px;">Развлекательный центр в Нижнем Тагиле</a><iframe class="map-width" src="https://yandex.ru/map-widget/v1/-/CCUN4FXSHC" width="560" height="400" frameborder="1" allowfullscreen="true"
+                                style="color:#eee;font-size:12px;position:absolute;top:28px;">Развлекательный центр в Нижнем Тагиле</a><iframe class="map-width" src="https://yandex.ru/map-widget/v1/-/CCUN4FXSHC" width="100%" height="100%" frameborder="1" allowfullscreen="true"
                                 style="position:relative;"></iframe>
                         </div>
                     </div>
