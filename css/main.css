@@ -178,6 +178,10 @@ main {
     font-size: 1.2em;
     border: 1px solid #000;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
 }
 .rega {
     margin: 15px;
@@ -189,6 +193,9 @@ main {
     font-size: 1.2em;
     border: 1px solid #000;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .reg:hover {
     background: #a9def8;
@@ -1024,12 +1031,14 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .contact-map__style {
     margin-top: 25px;
     border-radius: 7px;
     border: 1px solid #000;
+
 }
 
 .contact-map__style iframe {
@@ -1128,6 +1137,13 @@ main {
     z-index: 1000;
 }
 
+.LKHeader {
+    color: #000;
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
 .LKHeader2 {
     color: #000;
     font-size: 30px;
@@ -1219,6 +1235,13 @@ main {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.imgChildren2 {
+    max-width: 100%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    background-color:#a9def8;
+}
 
 .LKfillingChildren {
     max-width: 1200px;
@@ -1232,7 +1255,9 @@ main {
 
 .LKchildren {
     margin: 30px;
-    width: 270px;
+    max-width: 600px;
+    min-width: 270px;
+    
 }
 
 .LKchildren button {
@@ -1277,4 +1302,15 @@ main {
     font-size: 1em;
     border: 1px solid #000;
     border-radius: 3px;
+}
+
+.children th {
+    padding: 0px 4px;
+}
+.children td {
+    padding:  0px 4px;
+}
+
+.children {
+    margin-bottom: 10px;
 }
