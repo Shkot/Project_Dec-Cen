@@ -27,7 +27,7 @@ if ($result_events->num_rows == 0) {
 
 
 // Создаем календарь и заполняем событиями
-$calendar_html = "<div class='Cal'><h2>Календарь событий</h2></div><p class='LKHeader4 margin'>Год: $year, Месяц: $month</p>";
+$calendar_html = "<div class='Cal'><h2>Календарь событий</h2></div><p class='LKHeader4_Cal'>Год: $year, Месяц: $month</p>";
 
 $calendar_html .= "<div class='calendar'>";
 
