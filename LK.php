@@ -75,7 +75,7 @@ $result_children = $conn->query($sql_children);
 // HTML для вывода списка детей
 $children_html = "<div class='children'>";
 $children_html .= "<h2 class='LKHeader' style=' margin-bottom: 10px;'>Ваши дети</h2>";
-$children_html .= "<table border='1'>";
+$children_html .= "<table class='childrenTable' border='1' >";
 $children_html .= "<tr><th>Имя</th><th>Дата рождения</th><th>Пол</th></tr>";
 while ($row_child = $result_children->fetch_assoc()) {
     $children_html .= "<tr>";
@@ -191,7 +191,7 @@ $conn->close();
 
             <!-- Кнопка "Следующий месяц" -->
             <button class="nextMonthBtn" id="nextMonthBtn">Следующий месяц</button>
-            </div>
+        
             <!-- HTML форма для добавления нового события -->
             <div class="addEventForm">
                 <h3 class="LKHeader3">Добавить событие</h3>
@@ -205,7 +205,7 @@ $conn->close();
                     <button type="submit">Добавить событие</button>
                 </form>
             </div>
-        
+            </div>
     </div>
     
 </div>
