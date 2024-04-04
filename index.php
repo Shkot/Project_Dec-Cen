@@ -13,8 +13,6 @@ if (isset($_SESSION["username"])) {
     $logout_button = '';
 }
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
