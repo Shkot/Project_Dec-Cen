@@ -81,7 +81,7 @@ if (isset($_GET['registration_success']) && $_GET['registration_success'] == 1) 
                     </div>
                     
 
-                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" height="50px"> </a> </div>
+                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" min-height="50px"> </a> </div>
 <?php
 // Проверяем, авторизован ли пользователь
 if (isset($_SESSION["username"])) {

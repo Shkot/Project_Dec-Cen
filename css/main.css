@@ -322,6 +322,33 @@ main {
     margin-right: 40px;
 }
 
+.header-container__navLK ul {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    align-items: center;
+}
+
+.header-container__navLK li {
+    display: flex;
+    justify-content: center;
+    height: 108px;
+    padding: 0 10px 0 10px;
+    align-items: center;
+}
+
+.header-container__navLK li:hover {
+    border-bottom: 6px solid #ffffff;
+    margin-top: 6px;
+    transition: .2s;
+}
+
+.header-container__navLK {
+    flex-basis: 820px;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
 .logo {
     animation-duration: .8s;
     animation-name: logo-anim;

@@ -114,29 +114,13 @@ $conn->close();
         <div class="header-container LK">
             <div class="container">
                 <div class="header-container--first">
-                    <div class="header__burger-nav">
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn"> Меню</button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="#">Главная</a>
-                                <a href="#programm">Программы</a>
-                                <a href="#club-ev">Клуб развития</a>
-                                <a href="#price">Прайс</a>
-                                <a href="#contacts">Контакты</a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="logo"><img src="img/ДЦ.png" alt=""></div>
-                    <div class="header-container__nav">
-                        <ul>
+                    <div class="header-container__navLK">
+                        <ul style="display: flex; justify-content: center;" >
                             <li><a href="index.php">Главная</a></li>
-                            <li><a href="#programm">Программы</a></li>
-                            <li><a href="#club-ev">Клуб развития</a></li>
-                            <li><a href="#price">Прайс</a></li>
-                            <li><a href="#contacts">Контакты</a></li>
                         </ul>
                     </div>
-                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" height="50px"> </a> </div>
+                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" min-height="50px" > </a> </div>
 </header>
 <div class="LKcontainer" >
     <h2 class="LKHeader2" >Личный кабинет</h2>
