@@ -68,7 +68,6 @@ textarea {
     font-size: 30px;
 }
 
-
 /* ------- main -------- */
 
 main {
@@ -110,8 +109,17 @@ main {
     justify-content: space-around;
     align-items: center;
     height: 114px;
-    
 }
+
+.dark {
+    width: 100%;
+    height: 100%;   
+    position: fixed;
+    z-index: 999;
+    display: none;
+    background: rgba(0, 0, 0, .6);
+}
+
 .close-btn {
     position: absolute;
     top: 10px;
@@ -120,8 +128,8 @@ main {
 }
 
 .regist {
-   
-    position: absolute;
+    position: fixed;
+    z-index: 9999;
     width: 300px;
     height: 300px;
     top: 30%;
@@ -183,6 +191,23 @@ main {
     justify-content: center;
     color: #000;
 }
+
+.logout {
+    margin: 15px;
+    width: 90px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    background: #a9def8;
+    font-size: 1.2em;
+    border: 1px solid #000;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
 .rega {
     margin: 15px;
     width: 90px;
@@ -206,7 +231,8 @@ main {
     margin-top: 15px;
 }
 .auth {
-    position: absolute;
+    position: fixed;
+    z-index: 9999;
     width: 300px;
     height: 300px;
     top: 30%;
@@ -276,6 +302,19 @@ main {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     z-index: 9999;
 }
+
+.message-sent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
 .close-btn_reg {
     position: absolute;
     top: 5px;
@@ -345,7 +384,6 @@ main {
 
 .header-container__navLK {
     flex-basis: 820px;
-    margin-left: auto;
 }
 
 .logo {
@@ -649,12 +687,16 @@ main {
 .slider__item {
     flex: 0 0 100%;
     max-width: 100%;
+    display: flex;
+        justify-content: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 868px) {
     .slider__item {
         flex: 0 0 50%;
         max-width: 50%;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -662,6 +704,8 @@ main {
     .slider__item {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -1163,6 +1207,12 @@ main {
     z-index: 1000;
 }
 
+.LKcontainer button:hover {
+    background: #2d82bc;
+    color: #ffffff;
+    cursor:pointer;
+}
+
 .LKHeader {
     color: #000;
     font-size: 20px;
@@ -1183,6 +1233,8 @@ main {
     margin-left: -10px;
     margin-bottom: 10px;
 }
+
+
 
 .LKHeader4 {
     color: #000;
@@ -1205,8 +1257,8 @@ main {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-
 }
+
 #calendar {
     margin-top: 30px;
 }
@@ -1217,15 +1269,47 @@ main {
     margin: 30px;
 }
 
+.LKdata p{
+    padding-top: 15px;
+}
+
 .LKdatachange {
     margin: 30px;
-    width: 250px;
+    width: 500px;
+}
+
+.LKdatachange form{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.label_change {
+    height: 244.25px;
+    display: flex;
+    align-content: space-around;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.LKdatachange label{
+    margin-top: 10px;
+    width: 91px;
+    text-align: end;
+}
+
+.LKdatachange input{
+    margin-left: 10px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    margin-right: 10px;
 }
 
 .LKdatachange button{
     margin-top: 10px;
     padding: 10px;
-    width: 145px;
+    width: 200px;
     height: max-content;
     border: none;
     text-decoration: none;
@@ -1304,6 +1388,93 @@ main {
     font-size: 1em;
     border: 1px solid #000;
     border-radius: 3px;
+}
+
+.LKadmin {
+    max-width: 1200px;
+    padding: 0 15px;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.editFormWindow{
+    position: fixed;
+    z-index: 9999;
+    width: 300px;
+    height: 300px;
+    top: 30%;
+    left: 40%;
+    background-color: #a9def8;
+    border: 2px solid #000000;
+    border-radius: 5%;
+    padding: 15px;
+    display: none;
+}
+
+.editForm{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.editForm h4{
+    font-size: 16px; 
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.edit_label{
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_input{
+    width: 130px;
+}
+
+.edit_input_user{
+    width: 165px;
+}
+
+.edit_input_user input{
+    width: 165px;
+}
+
+
+.edit_data{
+    display: flex;
+}
+
+.edit_save{
+    margin: 10px 5px 10px 5px;
+    width: 130px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    background: #11749e;
+    font-size: 1.2em;
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.edit_cancel{
+    margin: 10px 5px 10px 5px;
+    width: 105px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    background: #11749e;
+    font-size: 1.2em;
+    border: 1px solid #000;
+    border-radius: 3px;
+    color: #fff;
 }
 
 .addEventForm {

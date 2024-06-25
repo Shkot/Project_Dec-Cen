@@ -18,28 +18,14 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $current_username = $row["username"];
+    $current_name = $row["name"];
+    $current_familiya = $row["familiya"];
+    $current_otchestvo = $row["otchestvo"];
     $current_phone = $row["phone"];
-    // Добавьте другие поля, если они есть в вашей базе данных
 } else {
     echo "Ошибка: Пользователь не найден.";
     exit();
 }
-
-// Обработка запроса на изменение данных
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Обработка изменения имени
-    if (isset($_POST["new_username"])) {
-        $new_username = $_POST["new_username"];
-        $sql = "UPDATE users SET username='$new_username' WHERE username='$username'";
-        if ($conn->query($sql) === TRUE) {
-            $current_username = $new_username; // Обновляем текущее имя пользователя
-        } else {
-            echo "Ошибка при обновлении имени: " . $conn->error;
-        }
-    }
-}
-
-
 
 $sql_user_id = "SELECT user_id FROM users WHERE username='$username'";
 $result_user_id = $conn->query($sql_user_id);
@@ -76,10 +62,11 @@ $result_children = $conn->query($sql_children);
 $children_html = "<div class='children'>";
 $children_html .= "<h2 class='LKHeader' style=' margin-bottom: 10px;'>Ваши дети</h2>";
 $children_html .= "<table class='childrenTable' border='1' >";
-$children_html .= "<tr><th>Имя</th><th>Дата рождения</th><th>Пол</th></tr>";
+$children_html .= "<tr><th>Имя</th><th>Фамилия</th><th>Дата рождения</th><th>Пол</th></tr>";
 while ($row_child = $result_children->fetch_assoc()) {
     $children_html .= "<tr>";
     $children_html .= "<td>" . $row_child["first_name"] . "</td>";
+    $children_html .= "<td>" . $row_child["second_name"] . "</td>";
     $children_html .= "<td>" . $row_child["date_of_birth"] . "</td>";
     $children_html .= "<td>" . $row_child["gender"] . "</td>";
     $children_html .= "</tr>";
@@ -128,15 +115,36 @@ $conn->close();
         <div class="LKfillingData" >
             <div class="LKdata" >
                 <h3 class="LKHeader3" >Данные пользователя:</h3>
-                <p><strong>Имя:</strong> <?php echo $current_username; ?></p>
+                <p><strong>Логин:</strong> <?php echo $current_username; ?></p>
+                <p><strong>Имя:</strong> <?php echo $current_name; ?></p>
+                <p><strong>Фамилия:</strong> <?php echo $current_familiya; ?></p>
+                <p><strong>Отчество:</strong> <?php echo $current_otchestvo; ?></p>
                 <p><strong>Телефон:</strong> <?php echo $current_phone; ?></p>
             </div>
-            <div class="LKdatachange" >
-                <h3 class="LKHeader3" >Изменить данные:</h3>
-                <form action="" method="post">
-                    <label for="new_username">Имя:</label>
-                    <input type="text" id="new_username" name="new_username" required>
-                    <button type="submit">Изменить имя</button>
+            <div class="LKdatachange">
+                <h3 class="LKHeader3" style="text-align: center;">Изменить данные:</h3>
+                <form action="update_user.php" method="post">
+                    <div class="label_change">
+                        <label for="new_username">Логин:</label>
+                        <label for="new_name">Имя:</label>
+                        <label for="new_familiya">Фамилия:</label>
+                        <label for="new_otchestvo">Отчество:</label>
+                        <label for="new_phone">Телефон:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="new_username" name="new_username">
+                        <input type="text" id="new_name" name="new_name">
+                        <input type="text" id="new_familiya" name="new_familiya">
+                        <input type="text" id="new_otchestvo" name="new_otchestvo">
+                        <input type="text" id="new_phone" name="new_phone">
+                    </div>
+                    <div>
+                        <button type="submit" name="update_field" value="username">Изменить логин</button>
+                        <button type="submit" name="update_field" value="name">Изменить имя</button>
+                        <button type="submit" name="update_field" value="familiya">Изменить фамилию</button>
+                        <button type="submit" name="update_field" value="otchestvo">Изменить отчество</button>
+                        <button type="submit" name="update_field" value="phone">Изменить телефон</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -153,6 +161,8 @@ $conn->close();
                 <form action="add_child.php" method="post">
                     <label for="child_first_name">Имя:</label>
                     <input type="text" id="child_first_name" name="child_first_name" required><br>
+                    <label for="child_first_name">Фамилия:</label>
+                    <input type="text" id="child_second_name" name="child_second_name" required><br>
                     <label for="child_date_of_birth">Дата рождения:</label>
                     <input type="date" id="child_date_of_birth" name="child_date_of_birth" required><br>
                     <label for="child_gender">Пол:</label>

@@ -1,7 +1,4 @@
 //  ПЛАВНАЯ ПРОКРУТКА 
-// 
-// 
-// 
 
 const anchors = [].slice.call(document.querySelectorAll('a[href*="#"]')),
     animationTime = 400,
@@ -36,10 +33,6 @@ anchors.forEach(function(item) {
     });
 });
 
-//  
-// 
-// 
-// 
 // Burger menu
 
 /* Когда пользователь нажимает на кнопку, переключаться раскрывает содержимое */
@@ -59,9 +52,7 @@ window.onclick = function(event) {
             }
         }
     }
-    // 
-    // 
-    // 
+ 
     // SLIDER
 document.addEventListener('DOMContentLoaded', function() {
     new ChiefSlider('.slider', {
@@ -71,3 +62,270 @@ document.addEventListener('DOMContentLoaded', function() {
         refresh: true,
     });
 });
+
+
+
+
+// Функция для закрытия сообщения об успешной регистрации
+function closeMessage() {
+    var message = document.getElementById('registrationMessage');
+    message.style.display = 'none';
+}
+
+// Функция для закрытия сообщения об успешной отправке сообщения
+function closeMessage() {
+    document.getElementById('messageSent').style.display = 'none';
+}
+
+//Функция показать окно входа
+function showAuth() {
+    var authDiv = document.querySelector('.auth');
+    var registDiv = document.querySelector('.regist');
+    var darkDiv = document.querySelector('.dark');
+    if (authDiv.style.display === "none") {
+        authDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    } else {
+        authDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    }
+}
+//Функция скрыть окно входа
+function hideAuth() {
+    var authDiv = document.querySelector('.auth');
+    var registDiv = document.querySelector('.regist');
+    var darkDiv = document.querySelector('.dark');
+    if (authDiv.style.display === "block") {
+        authDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    } else {
+        authDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    }
+}
+//Функция показать окно регистрации
+function showRegist() {
+    var authDiv = document.querySelector('.auth');
+    var registDiv = document.querySelector('.regist');
+    var darkDiv = document.querySelector('.dark');
+    if (registDiv.style.display === "none") {
+        authDiv.style.display = "none";
+        registDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    } else {
+        registDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    }
+}
+
+//Функция скрыть окно регистрации
+function hideRegist() {
+    var authDiv = document.querySelector('.auth');
+    var registDiv = document.querySelector('.regist');
+    var darkDiv = document.querySelector('.dark');
+    if (registDiv.style.display === "block") {
+        registDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    } else {
+        registDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    }
+}
+
+
+document.querySelector('.regorauth').addEventListener('click', function() {
+    var authDiv = document.querySelector('.auth');
+    var registDiv = document.querySelector('.regist');
+    authDiv.style.display = "block";
+    registDiv.style.display = "none";   
+});       
+
+//Функция скрыть темный экран
+function hideDark() {
+    var editFormWindowDiv  = document.querySelector('.editFormWindow');
+    var darkDiv = document.querySelector('.dark');
+    if (editFormWindowDiv.style.display === "block") {
+        editFormWindowDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    } else {
+        editFormWindowDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    }
+}
+
+//Функция показать темный экран
+function showDark() {
+    var editFormWindowDiv  = document.querySelector('.editFormWindow');
+    var darkDiv = document.querySelector('.dark');
+    if (editFormWindowDiv.style.display === "none") {
+        editFormWindowDiv.style.display = "block";
+        darkDiv.style.display = "block";
+    } else {
+        editFormWindowDiv.style.display = "none";
+        darkDiv.style.display = "none";
+    }
+}
+
+//Функция показать темный экран
+function showDark2() {
+    var darkDiv = document.querySelector('.dark');
+        darkDiv.style.display = "block";
+}
+
+//Функция скрыть темный экран
+function hideDark2() {
+    var darkDiv = document.querySelector('.dark');
+        darkDiv.style.display = "none";
+}
+
+// Функция для редактирования данных пользователя
+function editUser(userId) {
+const username = prompt("Введите новый логин:");
+const name = prompt("Введите новое имя:");
+const familiya = prompt("Введите новую фамилию:");
+const otchestvo = prompt("Введите новое отчество:");
+const phone = prompt("Введите новый телефон:");
+
+    if (username && name && familiya && otchestvo && phone) {
+        $.ajax({
+            url: 'admin_edit_user.php',
+            type: 'POST',
+            data: {
+                user_id: userId,
+                username: username,
+                name: name,
+                familiya: familiya,
+                otchestvo: otchestvo,
+                phone: phone
+            },
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    }
+}
+
+// Функция для редактирования данных ребенка
+function editChild(childId) {
+const first_name = prompt("Введите новое имя:");
+const second_name = prompt("Введите новую фамилию:");
+const date_of_birth = prompt("Введите новую дату рождения (YYYY-MM-DD):");
+const gender = prompt("Введите новый пол (М/Ж):");
+
+    if (first_name && second_name && date_of_birth && gender) {
+        $.ajax({
+            url: 'admin_edit_child.php',
+            type: 'POST',
+            data: {
+                child_id: childId,
+                first_name: first_name,
+                second_name: second_name,
+                date_of_birth: date_of_birth,
+                gender: gender
+            },
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    }
+}
+
+// Функция для редактирования данных события
+function editEvent(eventId) {
+    const event = prompt("Введите новое название события:");
+    const event_date = prompt("Введите новую дату события (YYYY-MM-DD):");
+    const event_time = prompt("Введите новое время события (HH:MM:SS):");
+
+    if (event && event_date && event_time) {
+        $.ajax({
+            url: 'admin_edit_event.php',
+            type: 'POST',
+            data: {
+                event_id: eventId,
+                event: event,
+                event_date: event_date,
+                event_time: event_time
+            },
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    }    
+}    
+
+function showEditUserForm(userId, username, name, familiya, otchestvo, phone) {
+    $('#editUserForm #user_id').val(userId);
+    $('#editUserForm #username').val(username);
+    $('#editUserForm #name').val(name);
+    $('#editUserForm #familiya').val(familiya);
+    $('#editUserForm #otchestvo').val(otchestvo);
+    $('#editUserForm #phone').val(phone);
+    $('#editUserModal').show();
+}    
+
+function showEditChildForm(childId, firstName, secondName, dateOfBirth, gender) {
+    $('#editChildForm #child_id').val(childId);
+    $('#editChildForm #first_name').val(firstName);
+    $('#editChildForm #second_name').val(secondName);
+    $('#editChildForm #date_of_birth').val(dateOfBirth);
+    $('#editChildForm #gender').val(gender);
+    $('#editChildModal').show();
+}
+
+function showEditEventForm(eventId, event, eventDate, eventTime) {
+    $('#editEventForm #event_id').val(eventId);
+    $('#editEventForm #event').val(event);
+    $('#editEventForm #event_date').val(eventDate);
+    $('#editEventForm #event_time').val(eventTime);
+    $('#editEventModal').show();
+}
+
+function closeModal(modalId) {
+    $('#' + modalId).hide();
+}
+
+$(document).ready(function() {
+    $('#editUserForm').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'admin_edit_user.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    });
+
+    $('#editChildForm').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'admin_edit_child.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    });
+
+    $('#editEventForm').on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'admin_edit_event.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                alert(response);
+                location.reload();
+            }
+        });
+    });
+});    
+                    
+

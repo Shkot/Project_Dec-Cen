@@ -5,9 +5,10 @@ session_start(); // Начинаем сессию
 // Проверяем, авторизован ли пользователь
 if (isset($_SESSION["username"])) {
     $username = $_SESSION["username"];
+    $role = $_SESSION["role"];
     $button_text_dva = 
     $button_text = $username; // Если пользователь авторизован, используем его имя в качестве текста кнопки
-    $logout_button = '<a class="regorauth" href="logout.php">Выйти</a>'; // Применяем класс стилей к кнопке "Выйти"
+    $logout_button = '<a class="logout" href="logout.php">Выйти</a>'; // Применяем класс стилей к кнопке "Выйти"
 } else {
     $button_enter = "Войти";
     $logout_button = '';
@@ -35,6 +36,7 @@ if (isset($_SESSION["username"])) {
     <title>Детский центр "Островок"</title>
 </head>
 
+
 <body>
 <?php
 // Проверяем наличие параметра "registration_success" в URL
@@ -45,14 +47,8 @@ if (isset($_GET['registration_success']) && $_GET['registration_success'] == 1) 
   </div>";
 }
 ?>
-<script>
-    // JavaScript функция для закрытия сообщения
-    function closeMessage() {
-        var message = document.getElementById('registrationMessage');
-        message.style.display = 'none';
-    }
-</script>
 
+<div class="dark"> </div>
     <header class="header">
         <div class="header-container">
             <div class="container">
@@ -81,39 +77,45 @@ if (isset($_GET['registration_success']) && $_GET['registration_success'] == 1) 
                     </div>
                     
 
-                    <div class="header-container__social"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" min-height="50px"> </a> </div>
+                    <div class="header-container__social" style="margin-right: 15px;"> <a href="https://vk.com/ostrovoknt" ><img src="img/vk.png" width="50px" min-height="50px"> </a> </div>
 <?php
 // Проверяем, авторизован ли пользователь
 if (isset($_SESSION["username"])) {
-    // Если пользователь авторизован, устанавливаем атрибут onclick для перенаправления на страницу LK.php
-    echo '<div class="rega" onclick="location.href=\'LK.php\'">' . $button_text . '</div>';
+    if ($_SESSION['role'] == 'admin') {
+        // Если пользователь администратор, показываем кнопку для перехода на страницу с таблицами
+        echo '<div class="rega" onclick="location.href=\'index_admin.php\'">Admin</div>';
+    } else {
+        // Если обычный пользователь, показываем кнопку для перехода на страницу LK.php
+        echo '<div class="rega" onclick="location.href=\'LK.php\'">' . $button_text . '</div>';
+    }
 } else {
     // Если пользователь не авторизован, показываем обычную кнопку "Войти"
-    echo '<button class="regorauth " type="button" onclick="showAuth()">' . $button_enter . '</button>';
+    echo '<button class="regorauth" type="button" onclick="showAuth()">' . $button_enter . '</button>';
 }
 ?>
-<?php echo $logout_button; ?>
-    
+<?php echo $logout_button;?>
+                    
                     <div class="regist">
-                    <form action="register.php" method="POST">
-                        <h4>Регистрация</h4>
-                        <span class="close-btn" onclick="hideRegist('regist')">✖</span>
-                        <div class="input_data_reg">
-                            <p>Логин</p>
-                            <input type="text" name="username" placeholder="Username" required>
-                            <p>Пароль</p>
-                            <input type="password" name="password" placeholder="Password" required>
-                            <p>Имя</p>
-                            <input type="text" name="surename" placeholder="surename" required>
-                            <p>Телефон</p>
-                            <input type="text" name="phone" placeholder="phone" required>
-                        </div>
-                        <button class="reg" type="submit">Зарегистрироваться</button>
-                        <p class="confidency" >Нажимая кнопку "Зарегистрироваться", Вы соглашаетесь c 
-                            <a href="/Det-Cen/polozhenie_po_zawite_personal_nyh_dannyh.pdf" target="_blank">
-                                условиями Политики в отношении обработки персональных данных</a></p>
-                    </form>
+                        <form action="register.php" method="POST">
+                            <h4>Регистрация</h4>
+                            <span class="close-btn" onclick="hideRegist('regist')">✖</span>
+                            <div class="input_data_reg">
+                                <p>Логин</p>
+                                <input type="text" name="username" placeholder="Username" required>
+                                <p>Пароль</p>
+                                <input type="password" name="password" placeholder="Password" required>
+                                <p>Имя</p>
+                                <input type="text" name="name" placeholder="name" required>
+                                <p>Телефон</p>
+                                <input type="text" name="phone" placeholder="phone" required>
+                            </div>
+                            <button class="reg" type="submit">Зарегистрироваться</button>
+                            <p class="confidency" >Нажимая кнопку "Зарегистрироваться", Вы соглашаетесь c 
+                                <a href="/Det-Cen/polozhenie_po_zawite_personal_nyh_dannyh.pdf" target="_blank">
+                                    условиями Политики в отношении обработки персональных данных</a></p>
+                        </form>
                     </div>
+                    
                     <form action="login.php" method="post">
                     <div class="auth" id="auth">
                         <h4>Войти в личный кабинет</h4>
@@ -137,64 +139,6 @@ if (isset($_SESSION["username"])) {
             </div>
         </div>
        
-        <script>
-    function showAuth() {
-        var authDiv = document.querySelector('.auth');
-        var registDiv = document.querySelector('.regist');
-        if (authDiv.style.display === "none") {
-            authDiv.style.display = "block";
-            
-        } else {
-            authDiv.style.display = "none";
-            
-        }
-    }
-    function hideAuth() {
-        var authDiv = document.querySelector('.auth');
-        var registDiv = document.querySelector('.regist');
-        if (authDiv.style.display === "block") {
-            authDiv.style.display = "none";
-            
-        } else {
-            authDiv.style.display = "block";
-            
-        }
-    }
-    function showRegist() {
-        var authDiv = document.querySelector('.auth');
-        var registDiv = document.querySelector('.regist');
-        if (registDiv.style.display === "none") {
-            authDiv.style.display = "none";
-            registDiv.style.display = "block";
-            
-        } else {
-            registDiv.style.display = "none";
-            
-        }
-    }
-    function hideRegist() {
-        var authDiv = document.querySelector('.auth');
-        var registDiv = document.querySelector('.regist');
-        if (registDiv.style.display === "block") {
-            registDiv.style.display = "none";
-            
-        } else {
-            registDiv.style.display = "block";
-            
-        }
-    }
-    
-
-    document.querySelector('.regorauth').addEventListener('click', function() {
-        var authDiv = document.querySelector('.auth');
-        var registDiv = document.querySelector('.regist');
-        authDiv.style.display = "block";
-        registDiv.style.display = "none";
-        
-    });
-</script>
-
-
         <div class="header-container--second">
             <h1>Детский центр <br>“Островок”</h1>
             <h1>Центр семейного досуга</h1>
@@ -208,6 +152,7 @@ if (isset($_SESSION["username"])) {
             </div>
         </div>
     </header>
+    
     <main>
         <section class="main-container main-container__programs">
             <div class="container">
@@ -458,32 +403,42 @@ if (isset($_SESSION["username"])) {
             <a id="contacts" name="contacts"></a>
             <div class="container">
                 <div class="contact-container">
-                    <div class="contact-container__content">
-                        <h2 class="own-h2">Хотите оставить сообщение?</h2>
+<?php
+// Проверяем наличие параметра "message_sent" в URL
+if (isset($_GET['message_sent']) && $_GET['message_sent'] == 1) {
+    echo "<div class='message-sent' id='messageSent'>
+    <span class='close-btn' onclick='closeMessage()'>×</span>
+    Сообщение успешно отправлено!
+    </div>";
+}
+?>
+                <div class="contact-container__content">
+                    <h2 class="own-h2">Хотите оставить сообщение?</h2>
+                    <form action="process_form.php" method="post">
                         <div class="content--contacts">
                             <div class="input-box">
-                                <input type="text" required="required">
+                                <input type="text" name="author" required="required">
                                 <span>Автор</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" required="required">
+                                <input type="email" name="email" required="required">
                                 <span>Email</span>
                             </div>
                             <div class="input-box">
-                                <input type="text" required="required">
+                                <input type="text" name="subject" required="required">
                                 <span>Тема письма</span>
                             </div>
                         </div>
                         <div class="content--form">
-                            <textarea required="required"></textarea>
+                            <textarea name="message" required="required"></textarea>
                             <span>Сообщение</span>
                         </div>
                         <div class="cont-send--btn">
-                            <button>Отправить</button>
+                            <button type="submit">Отправить</button>
                         </div>
-                    </div>
+                    </form>
+                </div>
                     <h2 class="own-h2">Наши Контакты</h2>
-
                 </div>
                 <div class="contact-container__info--map">
                     <div class="contact-info">
@@ -504,11 +459,8 @@ if (isset($_SESSION["username"])) {
             </div>
         </section>
     </main>
-
-
-
 </body>
+
 <script src="js/main.js"></script>
 <script src="js/chief-slider.js"></script>
-
 </html>
