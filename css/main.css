@@ -1510,6 +1510,21 @@ main {
     justify-content: center;
 }
 
+.otchet{
+    margin: 15px;
+    padding: 10px;
+    width: 200px;
+    margin-left: -200px;
+    height: max-content;
+    border: none;
+    text-decoration: none;
+    background: #a9def8;
+    font-size: 1em;
+    border: 1px solid #000;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+}
 
 .children th {
     padding: 0px 4px;

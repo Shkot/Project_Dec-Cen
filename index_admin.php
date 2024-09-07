@@ -233,7 +233,8 @@ $conn->close();
         </div>
 
         <div class="LKadmin" >
-            <?php echo $users_html; ?>
+            <?php echo $users_html; ?> 
+            <button type="submit" class="otchet">Выгрузить отчет</button>
            
             <!-- Форма для редактирования пользователя -->
             <div class="editFormWindow" id="editUserModal" style="display:none;">
@@ -268,7 +269,7 @@ $conn->close();
 
         <div class="LKadmin" >
             <?php echo $children_html; ?>
-           
+            <button type="submit" class="otchet">Выгрузить отчет</button>
             <!-- Форма для редактирования ребенка -->
             <div class="editFormWindow" id="editChildModal" style="display:none;">
                 <form class="editForm" id="editChildForm" action="admin_edit_child.php" method="post">
@@ -303,7 +304,7 @@ $conn->close();
 
         <div class="LKadmin" >
             <?php echo $calendar_html; ?>
-            
+            <button type="submit" class="otchet">Выгрузить отчет</button>
             <!-- Форма для редактирования события -->
             <div class="editFormWindow" id="editEventModal" style="display:none;">
                 <form class="editForm" id="editEventForm" action="admin_edit_event.php" method="post">
